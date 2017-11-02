@@ -28,7 +28,7 @@ public class ArrayExersize{  // begin class
     public static void main(String[] args) throws IOException{  // begin main
     
     // ********* declaration of constants **********
-    final int max = 5;			// maximum number of randoms allowed
+    			// maximum number of randoms allowed
     // ********** declaration of variables **********
     
     	String strin;				// string data input from keyboard
@@ -42,9 +42,10 @@ public class ArrayExersize{  // begin class
     	String tabSpace = "      ";	// six spaces
            Random r = new Random();		// create new random object
         int rand = r.nextInt(128);				// generate a random number between 0 and 127
-          
-        int arreh[] = new int[max];
-        int count = 0 ;
+        
+        int max;  
+        int count = 0 ; //a varible for counting the iterations of loops and assigning the arry chunk to be printed accordingly
+        
     // create instances of objects for i/o and formatting
     
     	//ConsoleReader console = new ConsoleReader(System.in);
@@ -65,21 +66,12 @@ JOptionPane.showMessageDialog(null, banner);
  	   	
     // ************************ get input **********************
 
-    	prompt = "Enter five numbers";	
+    	prompt = "Enter the number of numbers you would like to enter";	
+     max = Integer.parseInt(JOptionPane.showInputDialog(banner + "\n" + prompt));
+     
+     prompt = "enter the set of numbers";	
      strin = (JOptionPane.showInputDialog(banner + "\n" + prompt));
      tokens = strin.split(delim);
-     int incount=0;
-     
-     while(incount < max){
-     arreh[incount]= Integer.parseInt(tokens[incount]);
-     incount++;
-     }//end while
-    
-    // get input from the keyboard by calling the getNumber method
-    // note the argument that is passed into the method
-    // also note that since getNumber has a return type (int) you must use it
-    // in a context where the returning value has someplace to go
-       
     
     // ************************ processing ***************************
                    
@@ -87,13 +79,14 @@ JOptionPane.showMessageDialog(null, banner);
                     
     // ************************ print output ****************************
     System.out.println("original order = "); 
-    for(count = 0; count < max; count++){     
+    for(count = 0; count < max; count ++){     
      System.out.print(tokens[count] + " ");
-    }//end while
-      System.out.println("\nreverse order = "); 
-    for(count = 4; count > -1; count--){     
+    }//end for
+    
+     System.out.println("\nreverse order = ");   
+         for(count = max-1; count >= 0; count--){     
      System.out.print(tokens[count] + " ");
-    }//end while
+    }//end for
         // ******** closing message *********
         
         System.out.println("\nend of processing.");
