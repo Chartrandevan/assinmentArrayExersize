@@ -43,6 +43,8 @@ public class ArrayExersize{  // begin class
 //           Random r = new Random();		// create new random object
 //        int rand = r.nextInt(128);				// generate a random number between 0 and 127
         
+        String change;
+        int secreq;
         int request;
         int max;  
         int count = 0 ; //a varible for counting the iterations of loops and assigning the arry chunk to be printed accordingly
@@ -98,6 +100,23 @@ JOptionPane.showMessageDialog(null, banner);
         prompt = "Enter the number in the list you would like printed";	
      request = Integer.parseInt(JOptionPane.showInputDialog(banner + "\n" + prompt));
     }
+        
+        prompt = "Would you like to change a number \n enter Yes or No";
+        strin = JOptionPane.showInputDialog(banner + "\n" + prompt);
+        while (strin.equals("Yes")){
+         prompt = "What number in the list would you like to change";
+        secreq = Integer.parseInt(JOptionPane.showInputDialog(banner + "\n" + prompt));
+        prompt = "What would you like to change it to";
+        change = (JOptionPane.showInputDialog(banner + "\n" + prompt));
+        tokens[secreq - 1] = change;
+        System.out.println("new list");
+         for(count = 0; count < max; count ++){     
+     System.out.println((count + 1) + ". " + tokens[count] + " ");
+    }//end for
+        prompt = "Would you like to change another number \n enter Yes or No";
+        strin = JOptionPane.showInputDialog(banner + "\n" + prompt);
+        }
+        
         // ******** closing message *********
         
         System.out.println("\nend of processing.");
