@@ -37,18 +37,26 @@ public class ArrayExersize{  // begin class
         String banner;                          //string for printing banners
     	String prompt;				// prompt for use in input dialogs
     	
-        String tokens[];
+        
     	String delim = " ";		// delimiter string for splitting input string
     	String tabSpace = "      ";	// six spaces
 //           Random r = new Random();		// create new random object
 //        int rand = r.nextInt(128);				// generate a random number between 0 and 127
         
+
+        String tokens[];
+        
         String change;
         int secreq;
         int request;
+        
         int max;  
         int count = 0 ; //a varible for counting the iterations of loops and assigning the arry chunk to be printed accordingly
+        int scount= 0;
+        int last = 0;
+        int slast = 0;
         
+        boolean o = true;
     // create instances of objects for i/o and formatting
     
     	//ConsoleReader console = new ConsoleReader(System.in);
@@ -75,12 +83,13 @@ JOptionPane.showMessageDialog(null, banner);
      prompt = "enter the set of numbers";	
      strin = (JOptionPane.showInputDialog(banner + "\n" + prompt));
      tokens = strin.split(delim);
-    
+            int arreh[] = new int[max];
     // ************************ processing ***************************
                    
       //  sum = add(op1, op2);            // add operands 1 and 2
                     
     // ************************ print output ****************************
+   try{
     System.out.println("original order = "); 
     for(count = 0; count < max; count ++){     
      System.out.println((count + 1) + ". " + tokens[count] + " ");
@@ -90,7 +99,12 @@ JOptionPane.showMessageDialog(null, banner);
          for(count = max-1; count >= 0; count--){     
      System.out.println((count + 1) + ". " + tokens[count] + " ");
     }//end for
-        
+   }//end try
+   catch (java.lang.ArrayIndexOutOfBoundsException e){
+ JOptionPane.showMessageDialog(null, "You entered the wrong number of numbers", "Try Again", JOptionPane.WARNING_MESSAGE); 
+  o = false;
+   }
+   if (o == true){
           prompt = "Enter the number in the list you would like printed";	
      request = Integer.parseInt(JOptionPane.showInputDialog(banner + "\n" + prompt));
      System.out.println("\n Specified Numbers");
@@ -115,8 +129,29 @@ JOptionPane.showMessageDialog(null, banner);
     }//end for
         prompt = "Would you like to change another number \n enter Yes or No";
         strin = JOptionPane.showInputDialog(banner + "\n" + prompt);
-        }
+        }//end while
         
+         for(count = 0; count < max; count ++){     
+          arreh[count] = Integer.parseInt(tokens[count]);
+         }//end for
+         
+           for(count = 0; count < max; count ++){  
+            last = arreh[0];
+               if (last < arreh[count]){ 
+                   last = arreh[count];
+               }//end if
+           }//end for
+           System.out.println("\n The largest number is " + last);
+           
+           for(count = 0; count < max; count ++){  
+            last = arreh[0];
+               if (last > arreh[count]){ 
+                   last = arreh[count];
+               }//end if
+           }//end for
+           System.out.println("\n The smallest number is " + last);
+           
+   }//end long if
         // ******** closing message *********
         
         System.out.println("\nend of processing.");
