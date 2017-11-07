@@ -40,9 +40,10 @@ public class ArrayExersize{  // begin class
         String tokens[];
     	String delim = " ";		// delimiter string for splitting input string
     	String tabSpace = "      ";	// six spaces
-           Random r = new Random();		// create new random object
-        int rand = r.nextInt(128);				// generate a random number between 0 and 127
+//           Random r = new Random();		// create new random object
+//        int rand = r.nextInt(128);				// generate a random number between 0 and 127
         
+        int request;
         int max;  
         int count = 0 ; //a varible for counting the iterations of loops and assigning the arry chunk to be printed accordingly
         
@@ -80,13 +81,23 @@ JOptionPane.showMessageDialog(null, banner);
     // ************************ print output ****************************
     System.out.println("original order = "); 
     for(count = 0; count < max; count ++){     
-     System.out.print(tokens[count] + " ");
+     System.out.println((count + 1) + ". " + tokens[count] + " ");
     }//end for
     
      System.out.println("\nreverse order = ");   
          for(count = max-1; count >= 0; count--){     
-     System.out.print(tokens[count] + " ");
+     System.out.println((count + 1) + ". " + tokens[count] + " ");
     }//end for
+        
+          prompt = "Enter the number in the list you would like printed";	
+     request = Integer.parseInt(JOptionPane.showInputDialog(banner + "\n" + prompt));
+     System.out.println("\n Specified Numbers");
+        while ( request != -1){
+        request--;
+        System.out.println(tokens[request]);
+        prompt = "Enter the number in the list you would like printed";	
+     request = Integer.parseInt(JOptionPane.showInputDialog(banner + "\n" + prompt));
+    }
         // ******** closing message *********
         
         System.out.println("\nend of processing.");
